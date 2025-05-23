@@ -1,0 +1,82 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Course Projects Manager" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- Панель управления -->
+            <RowDefinition Height="*"/>     <!-- Таблицы -->
+        </Grid.RowDefinitions>
+
+        <!-- 1) Панель кнопок и формы -->
+        <StackPanel Orientation="Vertical" Margin="5" Grid.Row="0">
+            <!-- 1A: Распределить/Очистить -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Button x:Name="BtnDistribute"
+                        Content="Распределить темы"
+                        Click="BtnDistribute_Click"
+                        Width="150" Height="30"/>
+                <Button x:Name="BtnClear"
+                        Content="Очистить назначения"
+                        Click="BtnClear_Click"
+                        Width="150" Height="30"
+                        Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <!-- 1B: Ручное назначение проекта -->
+            <GroupBox Header="Ручное назначение проекта">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                    <StackPanel Margin="0,0,10,0">
+                        <TextBlock>№ студента:</TextBlock>
+                        <TextBlock>Группа:</TextBlock>
+                        <TextBlock>№ проекта:</TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBox x:Name="TbManNumberStudent"
+                                 Width="80" Margin="0,0,0,5"/>
+                        <TextBox x:Name="TbManGroupName"
+                                 Width="80" Margin="0,0,0,5"/>
+                        <TextBox x:Name="TbManNumberProject"
+                                 Width="80"/>
+                    </StackPanel>
+                    <Button Content="Назначить вручную"
+                            Click="BtnManualAssign_Click"
+                            Width="150" Height="30"
+                            Margin="10,0,0,0"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <!-- 2) Таблицы -->
+        <TabControl Grid.Row="1" Margin="5">
+            <TabItem Header="Group">
+                <DataGrid x:Name="DataGridGroup"
+                          AutoGenerateColumns="True"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"/>
+            </TabItem>
+            <TabItem Header="Student">
+                <DataGrid x:Name="DataGridStudent"
+                          AutoGenerateColumns="True"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"/>
+            </TabItem>
+            <TabItem Header="Project">
+                <DataGrid x:Name="DataGridProject"
+                          AutoGenerateColumns="True"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"/>
+            </TabItem>
+            <TabItem Header="Assignment">
+                <DataGrid x:Name="DataGridAssignment"
+                          AutoGenerateColumns="True"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
